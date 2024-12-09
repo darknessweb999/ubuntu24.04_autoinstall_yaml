@@ -1,0 +1,23 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    username: ''
+    password: ''
+    hostname: 'ubuntu-desktop'
+    realname: 'User'
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  timezone: Europe/Berlin
+  storage:
+    layout:
+      name: direct
+  packages:
+    - ubuntu-desktop
+  autologin:
+    enabled: true
+    user: ''
+  late-commands:
+    - curtin in-target -- apt-get update
+    - curtin in-target -- apt-get upgrade -y
